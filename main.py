@@ -39,7 +39,8 @@ def mine():
         amount=1
     )
 
-    block = blockchain.new_block(proof)
+    previous_hash = blockchain.hash(last_block)
+    block = blockchain.new_block(proof, previous_hash)
 
     response = {
         'message': 'New Block Forged',
@@ -77,6 +78,11 @@ def full_chain():
     }
 
     return jsonify(response), 200
+
+@app.route('/nodes/list', methods=['GET'])
+def nodee_list():
+
+    return jsonify(list(blockchain.nodes)), 201
 
 @app.route('/nodes/register', methods=['POST'])
 def register_node():

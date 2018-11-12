@@ -3,6 +3,7 @@ import json
 
 from time import time
 from urllib.parse import urlparse
+import requests
 
 class Blockchain(object):
     def __init__(self):
@@ -129,7 +130,7 @@ class Blockchain(object):
         :raturn: <bool> Truen если прошел проверку, а иначе False
         """
         last_block = chain[0]
-        current_inedx = 1
+        current_index = 1
 
         while current_index < len(chain):
             block = chain[current_index]
