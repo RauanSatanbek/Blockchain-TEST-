@@ -15,6 +15,14 @@ blockchain = Blockchain()
 def index():
     return 'Our very first REAL BLOCKCHAIN!!!'
 
+@app.route('/my/address', methods=['GET'])
+def my_address():
+    response = {
+        "address": node_identifier
+    }
+
+    return jsonify(response), 200
+
 @app.route('/mine', methods=['GET'])
 def mine():
     # Запускаем алгоритм PoW для того чтобы найти proof ...
